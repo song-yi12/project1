@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+@import url('//cdn.jsdelivr.net/gh/snz-hayden/toolo/fonts/nanum_squareround/nanum_squareround.css');
+/* font-family: 'Nanum Square Round'; */
+
+/* COMMON - S */
+.interior-tit{margin-bottom: 30px;}
+.interior-desc{
+  display: block;
+  margin-bottom: 120px;
+  font-size: 19px; font-weight: 500; line-height: 35px; color: #777; text-align: center; letter-spacing: -2px;
+  position: relative;
+}
+.interior-desc > em{font-weight: 700; color: #005263;}
+/* COMMON - E */
+/* INTERIOR - S */
+.swiper {
+  width: 1200px; height: 581px;
+  margin-bottom: 100px;
+}
+.swiper > p{
+  padding: 10px 10px; margin: 0 0 20px 40px;
+  border-radius: 50px 50px;
+  font-size: 45px; font-weight: 700; line-height: 60px; color: #005263; text-align: center;
+  background-color: #eafbff;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* INTERIOR - E */
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/reset.css">
+
+    <style>
+        *{box-sizing: border-box;}
+        .box1{
+            width: 100%;
+        }
+        .box1 li{
+            float: left;
+            width: 25%; height: 50px;
+            border: 1px solid #f90;
+        }
+        @media (max-width : 1200px) {
+            .box1 li{
+                width: calc( ( 100% - 40px ) / 3 );
+            }
+            .box1 li:nth-child(2) {margin: 0 20px;}
+            .box1 li:last-child{
+                width: 100%;
+            }
+        }
+        @media (max-width : 800px) {
+            .box1 li{
+                width: 100%;
+            }
+            .box1 li:nth-child(2) {margin: 0;}
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <ul class="box1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>

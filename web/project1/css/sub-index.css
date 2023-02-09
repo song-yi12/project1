@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+/*
+속성 순서
+1. display 및 레이아웃에 관련된
+2. 크기 3. 마진 패딩 4. 보더
+5. 텍스트
+6. 배경
+7. 포지션
+8. 기타등등
+*/
+
+/* SUBCOMMON -S */
+.sec {padding: 80px 0;}
+.sec-header {
+  float: left;
+  width: 1200px;
+  margin-bottom: 80px;
+  position: relative;
+}
+.sec-tit {
+  float: left;
+  margin-right: 34px;
+  width: 280px; height: 74px;
+  border-radius: 35px 35px; background-color: #00598f;
+  font-weight: 700; font-size: 51px; line-height: 70px; color: #fff; text-align: center; letter-spacing: -2px;
+}
+.sec-tit > em {font-weight: 100; font-size: 51px; letter-spacing: -3px;}
+.sec-tit-desc {
+  float: left;
+  width: 290px; height: 50px;
+  position: relative;
+}
+.sec-tit-desc:after {content: "";
+  width: 9px; height: 9px;
+  margin: 30px 0 0 -20px;
+  border-radius: 6px 6px; border: 1px solid #00598f;
+  background: #00598f;
+  position: absolute; left: 0; top: 0;
+}
+.sec-tit-desc > .sec-tit-desc-txt {
+  display: block;
+  font-weight: 400; font-size: 18px; line-height: 70px; color: #999; text-align: center; letter-spacing: -1px;
+}
+.intro-sec-inner > .intro-sec-tit {
+  float: left;
+  margin-left: 37px;
+  font-weight: 700; font-size: 30px; line-height: 33px; color: #555; letter-spacing: -2px;
+  position: relative;
+}
+.intro-sec-tit:before {content: "";
+  width: 9px; height: 9px;
+  border-radius: 9px 9px;
+  background-color: #e2e2e2;
+  position: absolute; left: -20px; top: 12px;
+}
+.intro-sec-inner {border: 1px solid #c2c2c2; background-color: #fff;}
+.intro-sec5-inner > .intro-sec-tit:after {background: none;}
+/* SUBCOMMON -E */
+/* SUBMAIN -S */
+/* VISUAL -S */
+.visual {background-image: url(../sub/img/sub-visual.png);}
+/* VISUAL -E */
+/* KOPRI-INTRO -S */
+/* SEC1 -S */
+.intro-sec1-wrap {clear: both;}
+.intro-sec1-inner {
+  width: 1200px; height: 206px;
+  padding: 42px 0;
+}
+.intro-sec1-tit {margin: 83px 60px 0 0;}
+.intro-sec1-box {
+  width: 898px; height: 145px;
+  margin-left: 244px; padding: 62px 0 0 41px;
+  background-image: url(../sub/img/sub-intro-sec1-bg.png);
+}
+.intro-sec1-box > li {
+  float: left;
+  font-weight: 400; font-size: 16px; line-height: 28px; color: #333; text-align: center; letter-spacing: -1px;
+}
+.intro-sec1-box > li:nth-child(1) {margin-right: 111px;}
+.intro-sec1-box > li:nth-child(2) {margin-right: 105px;}
+.intro-sec1-box > li:nth-child(3) {margin: 14px 100px 0 0;}
+.intro-sec1-box > li:nth-child(4) {margin-top: 14px;}
+/* SEC1 -E */
+/* SEC2 -S */
+.intro-sec2-bg {
+  width: 100%; height: 210px; min-width: 1200px;
+  text-align: center;
+  background: url(../sub/img/sub-intro-sec2-bg.png) no-repeat center center;
+}
+.intro-sec2-tit-wrap {padding: 31px 0;}
+.intro-sec2-tit {
+  margin-bottom: 20px;
+  font-weight: 700; font-size: 30px; line-height: 35px; color: #fff;
+}
+.intro-sec2-tit-wrap > ul > li {
+  font-weight: 400; font-size: 16px; line-height: 31px; color: #fff;
+}
+/* SEC2 -E */
+/* SEC3 -S */
+.intro-sec3-inner {
+  height: 668px;
+  margin-bottom: 80px;
+}
+.intro-sec3-tit {margin: 314px 66px 0 0;}
+.intro-sec3-desc {
+  width: 900px; height: 112px;
+  margin: 70px 0 0 283px; padding: 66px 0;
+  border-radius: 126px 126px;
+  background-color: #1c7edf;
+}
+.intro-sec3-desc > p {font-size: 25px; line-height: 30px; text-align: center; color: #fff;}
+.intro-sec3-desc > .intro-sec3-desc1 {
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+.intro-sec3-desc > .intro-sec3-desc1 > strong {font-weight: 700;}
+.intro-sec3-desc > .intro-sec3-desc2 {font-weight: 500; color: #fff;}
+.intro-sec3-desc-txt {
+  width: 638px; height: 139px;
+  margin-left: 414px; padding: 145px 0 0 14px;
+  background: url(../sub/img/sub-intro-sec3-bg.png) no-repeat center center;
+}
+.intro-sec3-desc-txt > li {
+  float: left;
+  font-weight: 400; font-size: 16px; line-height: 28px; color: #333; text-align: center; letter-spacing: -1px;
+}
+.intro-sec3-desc-txt > li:nth-child(1) {margin-right: 60px;}
+.intro-sec3-desc-txt > li:nth-child(2) {margin-right: 68px;}
+.intro-sec3-desc-txt > li:nth-child(3) {margin-top: 14px;}
+/* SEC3 -E */
+/* SEC4 -S */
+.intro-sec4-wrap {
+  width: 100%; height: 500px;
+  position: relative;
+}
+.intro-sec4-wrap:before {content: "";
+  width: 100%; height: 210px;
+  background-color: #1c7edf;
+  position: absolute; left: 0; top: 225px;
+}
+.intro-sec4-inner {
+  border: none;
+  position: relative;
+}
+.intro-sec4-inner >.intro-sec4-tit {
+  margin-top: 235px;
+  color: #fff;
+}
+.intro-sec4-aticle {
+  width: 1002px; height: 500px;
+  position: absolute; left: 198px; top: 0; z-index: 100;
+}
+.intro-sec4-aticle > li {
+  float: left;
+  width: 320px; height: 500px;
+  padding-top: 45px;
+  border-radius: 19px 19px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.03);
+}
+.intro-sec4-aticle > li + li {
+  margin-left: 21px;
+  position: relative;
+}
+.intro-sec4-aticle > li:before {content: "";
+  width: 169px; height: 205px;
+  background-image: url(../sub/img/sub-intro-sec4-boxbg.png);
+  position: absolute; left: 60px; top: 250px;
+}
+.intro-sec4-aticle > li:after {content: "";
+  width: 96px; height: 101px;
+  background-image: url(../sub/img/sub-intro-sec4-icon.png);
+  position: absolute; left: 112px; top: 319px;
+}
+.intro-sec4-aticle > li:nth-child(2):after {
+  width: 102px;
+  background-position: -96px 0;
+}
+.intro-sec4-aticle > li:nth-child(3):after {
+  width: 104px;
+  background-position: -198px;
+}
+.intro-sec4-aticle > li > em {
+  display: block;
+  margin-bottom: 11px;
+  font-weight: 700; font-size: 27px; line-height: 40px; color: #555;
+  background-color: #e8f2fc;
+}
+.intro-sec4-aticle > li > p {
+  margin-bottom: 27px;
+  font-weight: 400; font-size: 14px; line-height: 20px; color: #999;
+}
+.intro-sec4-aticle > li > span {font-weight: 400; font-size: 16px; line-height: 28px; color: #333;}
+/* SEC4 -E */
+/* SEC5 -S */
+.intro-sec5-inner {
+  height: 334px;
+  padding: 33px 0;
+  position: relative;
+}
+.intro-sec5-tit {margin: 150px 0 0 92px;}
+.intro-sec5-box {text-align: center;}
+.intro-sec5-box:before {content: "";
+  width: 737px; height: 125px;
+  background-image: url(../sub/img/sub-intro-ci.png);
+  position: absolute; left: 305px; top: 83px;
+}
+.intro-sec5-box > span {
+  float: left;
+  height: 20px;
+  margin-bottom: 163px;
+  border: 1px solid #777;
+  border-bottom: none;
+}
+.intro-sec5-box-simbol {
+  width: 447px;
+  margin: 0 13px 0 115px;
+}
+.intro-sec5-box-logo {width: 276px;}
+.intro-sec5-box-desc {
+  float: left;
+  margin-left: 244px;
+}
+.intro-sec5-box-desc > p {
+  margin-bottom: 20px;
+  font-weight: 300; font-size: 16px; line-height: 30px; color: #7d7d7d;
+}
+.intro-sec5-box-desc > a {
+  display: block;
+  width: 127px; height: 25px;
+  margin-left: 361px; padding-left: 10px;
+  border-radius: 20px 20px;
+  font-weight: 300; font-size: 14px; line-height: 25px; color: #fff; letter-spacing: -1px; text-align: left;
+  background-color: #014a94;
+  position: relative;
+}
+.intro-sec5-box-desc > a:after {content: "";
+  width: 14px; height: 13px;
+  background-image: url(../sub/img/sub-intro-sec5-download.png);
+  position: absolute; left: 116px; top: 6px;
+}
+.intro-sec5-box-desc:hover > a {text-decoration: underline;}
+/* SEC5 -E */
+/* KOPRI-INTRO -E */
+/* SUBMAIN -E */

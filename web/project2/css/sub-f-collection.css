@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@import url('//cdn.jsdelivr.net/gh/snz-hayden/toolo/fonts/nanum_squareround/nanum_squareround.css');
+/* font-family: 'Nanum Square Round'; */
+
+/* COMMON - S */
+.collection-inner{padding-top: 260px;}
+.collection-box{
+    padding: 100px 50px 100px 50px; margin-bottom: 100px;
+    border-radius: 100px 100px; border: 1px solid #00a6c6;
+    position: relative;
+}
+.collection-tit{
+    width: 550px;
+    margin: 0;
+    font-size: 55px; font-weight: 900; line-height: 65px; color: #555; text-align: center; 
+    background-color: #fff;
+    position: absolute; left: 325px; top: -33px;
+}
+/* COMMON - E */

@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+*{text-decoration: none;}
+
+.ill-wrap{
+  padding: 100px 100px;
+  position: relative;
+}
+.ill-wrap > ul:nth-child(1){position: relative; left: 69px; top: 93px;}
+.ill-wrap > ul:nth-child(2){position: relative; left: 2px; top: 129px;}
+.ill-wrap > ul:nth-child(3){position: relative; left: 19px; top: 200px;}
+.ill-wrap > ul:nth-child(4){position: relative; left: 19px; top: 259px;}
+.ill-money > li{
+  width: 31px; height: 46px;
+  text-indent: -9999px;
+  background: url(../img/money.png) no-repeat;
+  position: absolute;
+}
+.ill-money > li:nth-child(1){
+  width: 63px; height: 46px;
+  left: 22px; top: 11px; z-index: 2;
+  animation: ani01 1.5s infinite ease-in-out;
+}
+.ill-money > li:nth-child(2){
+  left: 11px; top: 6px; z-index: 1;
+  background-position: -63px 0;
+  animation: ani02 1.5s infinite ease-in-out;
+  animation-delay: .1s;
+}
+.ill-money > li:nth-child(3){
+  left: 0px; top: 0px;
+  background-position: -94px 0;
+  animation: ani03 1.5s infinite ease-in-out;
+  animation-delay: .2s;
+}
+.ill-money-blue > li{
+  width: 32px; height: 46px;
+  text-indent: -9999px;
+  background: url(../img/money-blue.png) no-repeat;
+  position: absolute;
+}
+.ill-money-blue > li:nth-child(1){
+  width: 54px; height: 46px;
+  left: 22px; top: 11px; z-index: 2;
+  animation: ani01 1.5s infinite ease-in-out;
+}
+.ill-money-blue > li:nth-child(2){
+  left: 11px; top: 6px; z-index: 1;
+  background-position: -54px 0;
+  animation: ani02 1.5s infinite ease-in-out;
+  animation-delay: .1s;
+}
+.ill-money-blue > li:nth-child(3){
+  left: 0px; top: 0px;
+  background-position: -86px 0;
+  animation: ani03 1.5s infinite ease-in-out;
+  animation-delay: .2s;
+}
+.ill-facebook > li{
+  width: 122px; height: 98px;
+  text-indent: -9999px;
+  background: url(../img/facebook.png) no-repeat;
+  position: absolute;
+}
+.ill-facebook > li:nth-child(1){background-position: -244px 0;}
+.ill-facebook > li:nth-child(2){
+  left: 11px; top: 8px;
+  background-position: -122px 0;
+}
+.ill-facebook > li:nth-child(3){
+  left: 21px; top: 15px;
+  background-position: 0 0;
+}
+.ill-twitter > li{
+  width: 122px; height: 98px;
+  text-indent: -9999px;
+  background: url(../img/twitter.png) no-repeat;
+  position: absolute;
+}
+.ill-twitter > li:nth-child(1){background-position: -244px 0;}
+.ill-twitter > li:nth-child(2){
+  left: 11px; top: 8px;
+  background-position: -122px 0;
+}
+.ill-twitter > li:nth-child(3){
+  left: 21px; top: 15px;
+  background-position: 0 0;
+}
+.ill-candy-2{margin-top: 380px;}
+.ill-iphone-shadow{position: absolute; left: 171px; top: 396px;}
+.ill-iphone{position: absolute; left: 171px; top: 381px;}
+.ill-shopbag{position: absolute; left: 399px; top: 350px;}
+.ill-openbox-body{position: absolute; left: 308px; top: 413px;}
+.ill-openbox-body2{position: absolute; left: 238px; top: 473px; z-index: 1;}
+.ill-openbox-body3{position: absolute; left: 309px; top: 444px;}
+.ill-shopbag-small{position: absolute; left: 303px; top: 508px; z-index: 1;}
+.ill-coupon{position: absolute; left: 319px; top: 551px;}
+.ill-redshose{position: absolute; left: 439px; top: 426px;}
+.ill-car{
+  position: absolute; left: 377px; top: 492px; z-index: 1;
+  animation: ani04 1.5s infinite ease-in-out;
+}
+.ill-giftbox-pink{
+  position: absolute; left: 330px; bottom: 160px;
+  animation: pinkbox 2s ease infinite;
+}
+.ill-tee{position: absolute; left: 290px; bottom: 300px;}
+.ill-hotballoon-wrap{position: relative; left: 370px; bottom: 380px;}
+.ill-hotballoon{
+  position: absolute; left: 30px;
+  animation: hotballoon 2s ease infinite;
+}
+.ill-cloud{position: absolute;}
+.ill-map{position: absolute; left: 130px; bottom: 40px;}
+.ill-glasses{position: absolute; left: 180px; bottom: 0px;}
+.ill-shop{position: absolute; left: 240px; bottom: -50px;}
+.card-wrap{
+  width: 63px; height: 38px;
+  position: relative; left: 220px; bottom: -120px;
+}
+.ill-card1{
+  position: absolute; left: 0; top: 0; z-index: 3;
+  animation: card1 1s ease infinite;
+}
+.ill-card2{
+  position: absolute; left: 0; top: 5px; z-index: 2;
+  animation: card2 1s ease infinite;
+}
+.ill-card3{
+  position: absolute; left: 0; top: 10px; z-index: 1;
+  animation: card3 1s ease infinite;
+}
+.ill-Calculator{
+  position: absolute; left: 400px; bottom: 10px;
+}
+.ill-letter-head{
+  position: absolute; z-index: 1;
+}
+.ill-letter-do{
+  position: absolute; left: -20px; top: 18px;
+}
+.ill-letter-stick{
+  position: absolute; left: 30px; top: 0; z-index: 2;
+  animation: stick 1s ease infinite;
+  transform-origin: bottom;
+}
+.ill-move-letter{
+  position: absolute; right: 80px; top: 80px;
+  animation: moveletter 1s ease-in infinite;
+}
+.ill-letter{
+  width: 50px; height: 97px;
+  position: absolute; left: 570px; bottom: 100px; z-index: 5;
+  animation: illletter 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+@keyframes  moveletter{
+  0%{right: 120px; top: 70px;}
+  50%{right: 10px; top: 10px;}
+  100%{right: 10px; top: 10px;}
+}
+@keyframes  illletter{
+  0%{transform: rotate(0);}
+  50%{transform: rotate(0);}
+  70%{transform: rotate(45deg);}
+  100%{transform: rotate(0);}
+}
+@keyframes stick {
+  0%{transform: rotate(0);}
+  60%{transform: rotate(0);}
+  80%{transform: rotate(45deg);}
+  100%{transform: rotate(0);}
+}
+@keyframes card1 {
+  0%{top: 0px;}
+  40%{top: -50px;}
+  70%{top: -50px;}
+  100%{top: 0px;}
+}
+@keyframes card2 {
+  0%{top: 5px;}
+  50%{top: -45px;}
+  60%{top:-45px;}
+  90%{top: 5px;}
+  100%{top: 5px;}
+}
+@keyframes card3 {
+  0%{top: 10px;}
+  60%{top: -40px;}
+  70%{top: 10px;}
+  100%{top: 10px;}
+}
+@keyframes hotballoon {
+  0%{top: 10px;}
+  50%{top: 100px;}
+  100%{top: 10px;}
+}
+@keyframes pinkbox {
+  0%{bottom: 160px;}
+  50%{bottom: 220px;}
+  100%{bottom: 160px;}
+}
+@keyframes ani04{
+  0%{left: 377px; top: 492px;}
+  33%{left: 393px; top: 484px;}
+  66%{left: 355px; top: 506px;}
+  90%{left: 377px; top: 492px;}
+}
+@keyframes ani01{
+  0%{top: 11px;}
+  33%{top: 51px;}
+  66%{top: -11px;}
+  90%{top: 11px;}
+}
+@keyframes ani02{
+  0%{top: 6px;}
+  33%{top: 46px;}
+  66%{top: -26px;}
+  90%{top: 6px;}
+}
+@keyframes ani03{
+  0%{top: 0px;}
+  33%{top: 40px;}
+  66%{top: -20px;}
+  90%{top: 0px;}
+}

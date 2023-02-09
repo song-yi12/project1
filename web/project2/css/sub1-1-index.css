@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+@import url('//cdn.jsdelivr.net/gh/snz-hayden/toolo/fonts/nanum_squareround/nanum_squareround.css');
+/* font-family: 'Nanum Square Round'; */
+
+/* COMMON - S */
+.sec{padding: 100px 0;}
+.tit{
+  margin-bottom: 50px;
+  font-size: 45px; font-weight: 900; line-height: 50px; color: #555; letter-spacing: -2px;
+}
+.tit > strong{font-weight: 900; color: #00a6c6;}
+.desc{font-size: 17px; font-weight: 500; line-height: 30px; color: #777; letter-spacing: -1px;}
+.desc > em{font-weight: 900; color: #00a6c6;}
+/* COMMON - E */
+/* MAIN - S */
+/* INTRO - S */
+/* NATURE - S */
+.intro-nature{
+  width: 100%; height:900px;
+  position: relative;
+}
+.nature-desc{margin-bottom: 74px;}
+.nature-textcircle{
+  float: left;
+  position: absolute; left: 285px; top: 287px;
+  animation: circle 10s linear infinite;
+}
+.nature-img{float: right;}
+@keyframes circle{
+  0%{}
+  50%{}
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.nature-logoimg{position: absolute; left: 407px; top: 443px;}
+/* NATURE - E */
+/* PHILOSOPHY - S */
+.intro-philosophy{
+  height: 720px;
+  position: relative;
+}
+.philosophy-desc{margin-bottom: 75px;}
+.philosophy-list > li{
+  float: left;
+  width: 283px; height: 285px;
+  padding-top: 200px; box-sizing: border-box;
+  border-radius: 60px 60px; border: 1px solid #fff;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 0 3px 3px; color: rgba(0,0,0,0.03);
+}
+.philosophy-list > li + li{margin-left: 20px;}
+.philosophy-list > li > p{
+  font-size: 24px; font-weight: 700; line-height: 35px; color: #555; text-align: center; letter-spacing: -1px;
+}
+.philosophy-list > li > p > em{color: #005c96;}
+.intro-philosophy::after{content: "";
+  display: block;
+  width: 421px; height: 421px;
+  background-image: url(/img/sub1-circle.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute; left: 779px; top: 116px; z-index: -1;
+  animation: circle 10s linear infinite;
+}
+.philosophy-list > li::before{content: "content";
+  display: block;
+  width: 116px; height: 116px;
+  background-image: url(/img/sub1-icon.png);
+  background-repeat: no-repeat;
+  position: absolute; left: 82px; top: 50px; z-index: 10;
+}
+.philosophy-list > li:nth-child(2)::before{background-position: -116px 0;}
+.philosophy-list > li:nth-child(3)::before{
+  width: 122px;
+  background-position: -232px 0;
+}
+.philosophy-list > li:nth-child(4)::before{
+  width: 117px;
+  background-position: -354px 0;
+}
+.philosophy-list > li::after{content: "";
+  display: block;
+  width: 116px; height: 116px;
+  background-image: url(/img/sub1-icon-after.png);
+  background-repeat: no-repeat;
+  position: absolute; left: 90px; top: 55px;
+}
+.philosophy-list > li:nth-child(2)::after{background-position: -116px 0;}
+.philosophy-list > li:nth-child(3)::after{
+  width: 122px;
+  background-position: -232px 0;
+}
+.philosophy-list > li:nth-child(4)::after{
+  width: 117px;
+  background-position: -354px 0;
+}
+/* PHILOSOPHY - E */
+/* CI - S */
+.intro-ci{height: 989px;}
+.ci-desc{margin-bottom: 73px;}
+.ci-logo{
+  width: 100%; height: 420px;
+  margin-bottom: 60px; padding: 113px 0 0 130px;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px; color: rgba(0,0,0,0.03);
+}
+.ci-logo-vertical{
+  float: left;
+}
+.ci-logo-horizontal{padding-top: 52px;}
+.ci-btn{
+  width: 421px; height: 83px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px; color: rgba(0,0,0,0.03);
+}
+.ci-btn > a{
+  display: block;
+  width: 421px; height: 83px;
+  padding-left: 24px; box-sizing: border-box;
+  transition: all .3s;
+}
+.ci-btn > a > span{
+  margin-right: 16px;
+  font-size: 24px; line-height: 83px; font-weight: 900; color: #005263; text-align: center;
+}
+.ci-btn > a > i{font-size: 24px; color: #555;}
+/* CI - HOVER */
+.ci-btn > a:hover{background-color: #005263;}
+.ci-btn > a:hover > span{color: #fff;}
+.ci-btn > a:hover > i{color: #fff;}
+/* CI - E */
+/* INTRO - E */
+/* MAIN - E */

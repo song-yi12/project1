@@ -1,0 +1,390 @@
+<?php
+/*
+ ********************************************************
+ * 기존 gnu4에서 만들었던 여분필드 활용 기능 설정 가능 게시판을 *
+ * gnu5 로 변경 2015.06.25								*
+ *														*
+ * 만두야닷컴 http://mandooya.com							*	
+ * admin@mandooya.com									*
+ ********************************************************
+ */
+
+
+//지역번호
+$areaCode = array(
+	"02"  => "서울",
+	"031" => "경기",
+	"032" => "인천",
+	"033" => "강원",
+	"041" => "충남",
+	"042" => "대전",
+	"043" => "충북",
+	"044" => "세종",
+	"051" => "부산",
+	"052" => "울산",
+	"053" => "대구",
+	"054" => "경북",
+	"055" => "경남",
+	"061" => "전남",
+	"062" => "광주",
+	"063" => "전북",
+	"064" => "제주",
+	"070" => "070"
+);
+
+//휴대폰 국번
+$mNum = array("010", "011", "016", "017", "018", "019");
+
+
+//여분필드 제목 가져오기
+function mSubj($val) {
+	GLOBAL $board;
+	return $board["bo_".$val."_subj"];
+}
+
+
+//view.php
+function mView($val,$type,$gubun='') {
+	GLOBAL $view,$board;
+
+	$view[$val] = @explode("|",$view["wr_".$val]);
+	
+
+	switch($type) {
+
+		case "memo" :
+			$rtn .= nl2br($view[$val][0]);
+			break;
+
+
+		case "address" : 
+			$rtn .= "(".$view[$val][0]."-".$view[$val][1].") ".$view[$val][2]." ".$view[$val][3]." ".$view[$val][4];
+			break;
+
+
+		case "time" :
+			$gb = @explode("@",$board["bo_".$val]);
+			$fieldValue = @explode("|",$gb[0]);
+			$filedNanum = @explode("|",$gb[1]);
+
+			foreach($view[$val] as  $k => $v) {
+				$vals = @explode("-",$v);
+				
+				if(in_array("h",$fieldValue)) {
+					$tArray[$k] .= $vals[0]."시 ";
+				}
+				if(in_array("i",$fieldValue)) {
+					$tArray[$k] .= $vals[1]."분 ";
+				}
+				if(in_array("s",$fieldValue)) {
+					$tArray[$k] .= $vals[2]."초 ";
+				}
+			}
+
+
+
+			$rtn .= @implode($gubun,$tArray);
+				
+
+			break;
+
+
+		default :
+			$rtn .= @implode($gubun,$view[$val]);
+			break;
+	}
+
+	return $rtn;
+}
+
+
+//write.php 
+function mWrite($val,$type="",$required="",$style="") {
+	GLOBAL $board,$write,$areaCode,$mNum;
+
+	$fieldValue = @explode("|",$board["bo_".$val]);
+
+	if(strtolower($required) == "r") {
+		$required = "required";
+	}
+	
+	$type = @explode("/",$type);
+	$perc = $type[1];
+
+
+	$wr[$val] = @explode("|",$write["wr_".$val]);
+
+	switch(strtolower($type[0])) {
+
+		//라디오버튼
+		case "radio" :			
+			unset($checked);//체크확인
+			$checked[$write['wr_'.$val]] = "checked";
+
+			foreach($fieldValue as $k => $v) {
+				$rtn .= "<input type='radio' name='wr_{$val}' id='wr_{$val}_{$k}' value='{$v}' {$checked[$v]} style='{$style}'> <label for='wr_{$val}_{$k}'>{$v}</label>&nbsp;";
+
+				// 한칸 띄우기
+				if( $perc && ($k % $perc == ($perc-1) )) {
+					$rtn .= "<br />";
+				}
+			}
+
+			break;
+	
+
+
+
+		//셀렉트박스
+		case "select" :
+			if(!$perc) {
+				$perc = 1;
+			}
+			$field = @explode("@",$board["bo_".$val]);
+			for($i=0;$i<$perc;$i++) {
+				$fieldValue = @explode("|",$field[$i]);
+				unset($selected);
+				$selected[$wr[$val][$i]] = "selected";
+
+				$rtn .= "<select name='wr_{$val}[]' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+				$rtn .= "<option value=''>선택하세요</option>";
+
+				foreach($fieldValue as $v) {
+					$rtn .= "<option {$selected[$v]} value='{$v}'>{$v}</option>";
+				}
+
+				$rtn .= "</select> ";
+			}
+
+			break;
+
+
+
+		//체크박스
+		case "checkbox" :
+			unset($checks);
+			$checks = @explode("|",$write['wr_'.$val]);
+
+			foreach($fieldValue as $k => $v) {
+				$chk ="";
+
+				if(in_array($v, $checks)) {
+					$chk = "checked";
+				} 
+
+				$rtn .= "<input type='checkbox' name='wr_{$val}[]' id='wr_{$val}_{$k}' value='{$v}' {$chk} style='{$style}'> <label for='wr_{$val}_{$k}'>{$v}</label>&nbsp;";
+
+				// 한칸 띄우기
+				if( $perc && ($k % $perc == ($perc-1) )) {
+					$rtn .= "<br />";
+				}
+			}
+			
+			break;
+
+
+		// 전화번호
+		case "tel" :
+			
+
+			unset($selected);
+			$selected[$wr[$val][0]] = "selected";
+
+			$rtn .= "<select name='wr_{$val}[]' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			$rtn .= "<option value=''>선택하세요</option>";
+
+			foreach($areaCode as $k => $v) {
+				$rtn .= "<option value='{$k}' {$selected[$k]}>{$k}({$v})</option>";
+			}
+
+			$rtn .= "</select>";
+
+			$rtn .= " - <input type='text' name='wr_{$val}[]' value='{$wr[$val][1]}' size=5 maxlength=4 style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'> - ";
+			$rtn .= "<input type='text' name='wr_{$val}[]' value='{$wr[$val][2]}' size=4 maxlength=4 style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			
+			break;
+
+
+		//모바일
+		case "mobile" :
+
+			unset($selected);
+			$selected[$wr[$val][0]] = "selected";
+
+			$rtn .= "<select name='wr_{$val}[]' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			$rtn .= "<option value=''>선택하세요</option>";
+
+			foreach($mNum as  $v) {
+				$rtn .= "<option value='{$v}' {$selected[$v]}>{$v}</option>";
+			}
+
+			$rtn .= "</select>";
+
+			$rtn .= " - <input type='text' name='wr_{$val}[]' value='{$wr[$val][1]}' size=5 maxlength=4 style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'> - ";
+			$rtn .= "<input type='text' name='wr_{$val}[]' value='{$wr[$val][2]}' size=4 maxlength=4 style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			
+			break;
+
+
+
+		//텍스트에어리어
+		case "textarea" :
+			$rtn .= "<textarea name='wr_{$val}' id='wr_{$val}' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>{$write['wr_'.$val]}</textarea>";
+			break;
+
+
+
+		
+		//날짜
+		case "date" :		
+			if(!$perc) {
+				$perc = 1;
+			}
+			for($i=0;$i<$perc;$i++) { 
+				$rtn .= "{$fieldValue[$i]}";
+				$rtn .= "<input type='text' readonly name='wr_{$val}[]' id='wr_{$val}_{$i}' value='{$wr[$val][$i]}' style='{$style}' class='frm_input dates {$required}' title='".mSubj($val)."'>";
+			}
+
+			break;
+
+		
+		//시간
+		case "time" :
+			if(!$perc) {
+				$perc = 1;
+			}
+
+			$field = @explode("@",$board["bo_".$val]);
+			$fieldValue = @explode("|",$field[0]);
+			$filedNanum = @explode("|",$field[1]);
+
+			for($i=0;$i<$perc;$i++) {
+				$rtn .= $filedNanum[$i];
+				$v[$i] = @explode("-",$wr[$val][$i]);
+
+				if(in_array("h",$fieldValue)) {
+					$rtn .= "<select name='wr_{$val}[{$i}][]' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+					for($h=0;$h<24;$h++) { 
+						$h = sprintf("%02d",$h);
+						unset($sel);
+						if($h == $v[$i][0]) {
+							$sel = "selected";
+						}
+						$rtn .= "<option value=".$h." ".$sel." >".$h."</option>";
+					}
+					$rtn .= "</select> 시 ";
+				} else {
+					$rtn .= "<input type='hidden' name='wr_{$val}[{$i}][]' value='.'>";
+				}
+				
+				if(in_array("i",$fieldValue)) {
+					$rtn .= "<input type='text' name='wr_{$val}[{$i}][]' value='".$v[$i][1]."' size='2' maxlength='2' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'> 분 ";
+				} else {
+					$rtn .= "<input type='hidden' name='wr_{$val}[{$i}][]' value='.'>";
+				}
+
+				if(in_array("s",$fieldValue)) {
+					$rtn .= "<input type='text' name='wr_{$val}[{$i}][]' value='".$v[$i][2]."' size='2' maxlength='2' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'> 초 ";
+				} else {
+					$rtn .= "<input type='hidden' name='wr_{$val}[{$i}][]' value='.'>";
+				}
+			}
+			break;
+
+
+
+		//이메일
+		case "email" :
+
+			unset($selected);
+			$selected[$wr[$val][1]] = "selected";
+
+			if(in_array($wr[$val][1],$fieldValue)) {
+				$disp =";display:none;";
+			}
+
+			
+			$rtn .= "<input type='text' name='wr_{$val}[]' value='{$wr[$val][0]}' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			$rtn .= " @ ";
+			$rtn .= "<input type='text' name='wr_{$val}[]' id='emailEnd_{$val}' value='{$wr[$val][1]}' style='{$style} {$disp}' class='frm_input {$required}' title='".mSubj($val)."'>";
+
+			$rtn .= " <select name='email_sel_{$val}' id='email_sel_{$val}' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."' onchange=\"chkEmail('{$val}','{$wr[$val][1]}')\" >";
+			$rtn .= "<option value='direct'>직접입력</option>";
+			
+			foreach($fieldValue as $v) {
+				$rtn .= "<option value='{$v}' {$selected[$v]}>{$v}</option>";
+			}
+			$rtn .= "</select>";
+
+			break;
+
+
+		//달력
+		case "address" :
+					add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
+					$rtn .= "
+					<label for='wr_{$val}_0' class='sound_only'>우편번호 앞자리</label>
+					<input type='text' name='wr_{$val}[0]' value='{$wr[$val][0]}' id='wr_{$val}_0' class='frm_input readonly' size='3' maxlength='3'> -
+					<label for='wr_{$val}_1' class='sound_only'>우편번호 뒷자리</label>
+					<input type='text' name='wr_{$val}[1]' value='{$wr[$val][1]}' id='wr_{$val}_1' class='frm_input readonly' size='3' maxlength='3'>
+					<button type='button' class='btn_frmline' onclick=\"win_zip('fwrite', 'wr_{$val}[0]', 'wr_{$val}[1]', 'wr_{$val}[2]', 'wr_{$val}[3]', 'wr_{$val}[4]', 'wr_{$val}[5]');\">주소 검색</button><br>
+					<input type='text' name='wr_{$val}[2]' value='{$wr[$val][2]}' id='wr_{$val}_2' class='frm_input readonly' size='60'>
+					<label for='wr_{$val}_2'>기본주소</label><br>
+					<input type='text' name='wr_{$val}[3]' value='{$wr[$val][3]}' id='wr_{$val}_3' class='frm_input' size='60'>
+					<label for='wr_{$val}_3'>상세주소</label>
+					<br>
+					<input type='text' name='wr_{$val}[4]' value='{$wr[$val][4]}' id='wr_{$val}_4' class='frm_input' size='60'>
+					<label for='wr_{$val}_4'>참고항목</label>
+					<input type='hidden' name='wr_{$val}[5]' id='wr_{$val}_5' value='{$wr[$val][5]}'><br>
+					";
+
+			break;
+
+
+
+		//텍스트, 기본 
+		case "text" :
+		default :
+			if($perc>1) {
+				for($i=0;$i<$perc;$i++) {
+					$rtn .= "<input type='text' name='wr_{$val}[]' id='wr_{$val}_$i' value='{$wr[$val][$i]}' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>&nbsp;";
+				}
+			} else { 
+				$rtn .= "<input type='text' name='wr_{$val}' id='wr_{$val}' value='{$write['wr_'.$val]}' style='{$style}' class='frm_input {$required}' title='".mSubj($val)."'>";
+			}
+
+			break;
+
+
+	}
+	return $rtn;
+}
+
+
+?>
+
+<script>
+function chkEmail(chkid,vval) {
+	var nMail = $("#email_sel_"+chkid).val();
+	
+	if(nMail!="direct") {
+		$("#emailEnd_"+chkid).hide().val(nMail).attr("required","");
+	} else {
+		$("#emailEnd_"+chkid).val(vval).show().attr("required","required");
+	}
+}
+
+jQuery(function($){
+	$('.dates').datepicker({
+		showOn: 'button',
+		buttonImage: g5_url+'/skin/board/<?=$board[bo_skin]?>/img/calendar.gif',
+		buttonImageOnly: true,
+		buttonText: "달력",
+		changeMonth: true,
+		changeYear: true,
+		showButtonPanel: true,
+		yearRange: 'c-99:c+99'
+	});
+});
+
+</script>
